@@ -11,19 +11,21 @@ public class Game {
 	public Player oPlayer = new Player();
 	public Player whoseTurnIsIt;
 	
+	
 	public void play() throws IOException {
 		xPlayer.whoAmI = Square.X;
 		oPlayer.whoAmI = Square.O;
 		whoseTurnIsIt = xPlayer;
-		
-		
+		board.boardInit();
 		
 		while(true) {
 			int row = ConsoleUI.promptForInt("What row?", 0, 2);
 			int col = ConsoleUI.promptForInt("What col?", 0, 2);
-			if(!board.isAvailable(row, col)) {
-				board.takeSquare(whoseTurnIsIt, row, col);
+			if(board.isAvailable(row, col)) {
+				//board.boardInit();
+				board.takeSquare(xPlayer, row, col);
 			}
+			board.boardPrint();
 		}
 	}
 

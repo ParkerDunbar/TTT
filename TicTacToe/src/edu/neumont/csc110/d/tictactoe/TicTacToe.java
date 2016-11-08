@@ -7,6 +7,7 @@ public class TicTacToe {
 	public static void main(String[] args) throws IOException {
 		Game g = new Game();
 		g.play();
+		
 	}
 
 }
