@@ -33,6 +33,91 @@ public class Board {
 	public void takeSquare(Player player, int row, int col) {
 		squares[row][col].takenBy = (player.whoAmI);
 	}
+
+	public boolean checkWin() {
+		//Vertical X
+		if(squares[0][0].takenBy == Square.X && squares[0][1].takenBy == Square.X && squares[0][2].takenBy == Square.X) {
+			return true;
+		}
+		else if(squares[1][0].takenBy == Square.X && squares[1][1].takenBy == Square.X && squares[1][2].takenBy == Square.X) {
+			return true;
+		}
+		else if(squares[2][0].takenBy == Square.X && squares[2][1].takenBy == Square.X && squares[2][2].takenBy == Square.X) {
+			return true;
+		}
+		
+		//Horizontal X
+		if(squares[0][0].takenBy == Square.X && squares[1][0].takenBy == Square.X && squares[2][0].takenBy == Square.X) {
+			return true;
+		}
+		else if(squares[0][1].takenBy == Square.X && squares[1][1].takenBy == Square.X && squares[2][1].takenBy == Square.X) {
+			return true;
+		}
+		else if(squares[0][2].takenBy == Square.X && squares[1][2].takenBy == Square.X && squares[2][2].takenBy == Square.X) {
+			return true;
+		}
+		
+		//Diagonal X
+		if(squares[0][0].takenBy == Square.X && squares[1][1].takenBy == Square.X && squares[2][2].takenBy == Square.X) {
+			return true;
+		}
+		else if(squares[0][2].takenBy == Square.X && squares[1][1].takenBy == Square.X && squares[2][0].takenBy == Square.X) {
+			return true;
+		}
+		
+		
+		
+		//Vertical O
+		if(squares[0][0].takenBy == Square.O && squares[0][1].takenBy == Square.O && squares[0][2].takenBy == Square.O) {
+			return true;
+		}
+		else if(squares[1][0].takenBy == Square.O && squares[1][1].takenBy == Square.O && squares[1][2].takenBy == Square.O) {
+			return true;
+		}
+		else if(squares[2][0].takenBy == Square.O && squares[2][1].takenBy == Square.O && squares[2][2].takenBy == Square.O) {
+			return true;
+		}
+		
+		//Horizontal O
+		if(squares[0][0].takenBy == Square.O && squares[1][0].takenBy == Square.O && squares[2][0].takenBy == Square.O) {
+			return true;
+		}
+		else if(squares[0][1].takenBy == Square.O && squares[1][1].takenBy == Square.O && squares[2][1].takenBy == Square.O) {
+			return true;
+		}
+		else if(squares[0][2].takenBy == Square.O && squares[1][2].takenBy == Square.O && squares[2][2].takenBy == Square.O) {
+			return true;
+		}
+		
+		//Diagonal O
+		if(squares[0][0].takenBy == Square.O && squares[1][1].takenBy == Square.O && squares[2][2].takenBy == Square.O) {
+			return true;
+		}
+		else if(squares[0][2].takenBy == Square.O && squares[1][1].takenBy == Square.O && squares[2][0].takenBy == Square.O) {
+			return true;
+		}
+		
+		return false;
+	}
+
+	
+	
+	public Boolean checkTie() {
+		int test = 0;
+		for(int i=0;i<squares.length;i++) {
+			for(int j=0;j<squares.length;j++) {
+				if(squares[i][j].takenBy == Square.AVAILABLE) {
+					test++;
+				}
+			}
+		}
+		
+		if(test == 9) {
+			return false;
+		}
+		
+		return true;
+	}
 	
 	
 	
